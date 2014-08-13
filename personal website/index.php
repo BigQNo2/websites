@@ -6,7 +6,7 @@
 
 <?php
 echo "This is my webpage!";
-phpinfo()
+phpinfo();
 ?>
 
 </body>
