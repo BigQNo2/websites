@@ -1,0 +1,32 @@
+/* latin-ext */
+@font-face {
+  font-family: 'Concert One';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Concert One'), local('ConcertOne-Regular'), url(http://fonts.gstatic.com/s/concertone/v6/eNLG875uBc3mU2X9z56PW4gt8zh49GR1Df_uPwTXpxw.woff2) format('woff2'), url(http://fonts.gstatic.com/s/concertone/v6/eNLG875uBc3mU2X9z56PW6fTCPadK0KLfdEfFtGWCYw.woff) format('woff');
+  unicode-range: U+0100-024F, U+1E00-1EFF, U+20A0-20AB, U+20AD-20CF, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Concert One';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Concert One'), local('ConcertOne-Regular'), url(http://fonts.gstatic.com/s/concertone/v6/eNLG875uBc3mU2X9z56PW4gp9Q8gbYrhqGlRav_IXfk.woff2) format('woff2'), url(http://fonts.gstatic.com/s/concertone/v6/eNLG875uBc3mU2X9z56PW7rIa-7acMAeDBVuclsi6Gc.woff) format('woff');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
+}
+/* latin */
+@font-face {
+  font-family: 'Leckerli One';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Leckerli One'), local('LeckerliOne-Regular'), url(http://fonts.gstatic.com/s/leckerlione/v6/S2Y_iLrItTu8kIJTkS7DrBampu5_7CjHW5spxoeN3Vs.woff2) format('woff2'), url(http://fonts.gstatic.com/s/leckerlione/v6/S2Y_iLrItTu8kIJTkS7DrKRDOzjiPcYnFooOUGCOsRk.woff) format('woff');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
+}
+/* latin */
+@font-face {
+  font-family: 'The Girl Next Door';
+  font-style: normal;
+  font-weight: 400;
+  src: local('The Girl Next Door'), local('TheGirlNextDoor'), url(http://fonts.gstatic.com/s/thegirlnextdoor/v6/cWRA4JVGeEcHGcPl5hmX7ue7_CzgYW7OS3c1JllmJbo.woff2) format('woff2'), url(http://fonts.gstatic.com/s/thegirlnextdoor/v6/cWRA4JVGeEcHGcPl5hmX7p-yoK3Kl6E6RmvAncM23y8.woff) format('woff');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
+}
