@@ -8,7 +8,7 @@
         <meta name="description" content="The blog of Yuguang Li">
         <link rel="canonical" href="blog/project_blog.html">
         <link rel="shortcut icon" href="../assets/img/shortcut.ico">
-        <link href="../assets/css/head.css" rel="stylesheet" type="text/css">
+<!--         <link href="../assets/css/head.css" rel="stylesheet" type="text/css"> -->
         <link rel="stylesheet" href="../assets/css/all.css" type="text/css">
         <link rel="stylesheet" href="../assets/css/docs.css" type="text/css">
         <link rel="stylesheet" href="../assets/css/bootstrap.min.css" type="text/css">
@@ -46,7 +46,7 @@
     {creation, maths, coding}
     <br>
     <br>
-    I'm a {Researcher, Web developer}
+    I'm a {Web developer, Researcher}
     <br>
     and this is my <a title="Yuguang's resume" href="../assets/cv/cv_YuguangLi.pdf" onclick="_gaq.push([&#39;_trackEvent&#39;, sidebar&#39;, &#39;click&#39;, &#39;cv&#39;]);">Résumé</a>.
       </p>
@@ -91,13 +91,93 @@
 <div class="span6 seven columns content bs-docs-container ">
 
 <p class="meta">
+  July 2014
   <a href="../index.html">
     <i class="home icon-home"></i>
   </a>
 </p>
 <h1 class="title">Lab Curriculum for Computer Cyber Security</h1>
+
+<div id="post">
+<blockquote>
+<p>The resources used and experience in our Lab curriculum will be helpful to those who are considering learning the basic cybersecurity knowledge or trying the simple penetration testings.</p>
+</blockquote>
+
+<h3 id="Introduciton">Introduction</h3>
+<p>In this blog, I will not talk about much about the course contents for the reason that the graduate course may still use these materials in the future, but I would like to mainly introduce the <strong>environment</strong> and some topics we used in our Lab curriculum that, I think, could offer some hints to the people who are interested in exploring the cybersecurity world or just plan to try some penetration testings for pleasure.</p>
+<hr>
+<h3 id="Environment">Environment</h3>
+<p>The Environment setup constructed with the following desiderata in mind:</p>
+<ul>
+
+  <li>
+    Simplicity: an introductory tutorial in cybersecurity does not need a complicated environment to achieve its objectives.
+  </li>
+
+    <li>
+      Security: keep the target (vulnerable) machine off the public Internet; minimize possible effects of the actions on your intranet.
+  </li>
+
+    <li>
+      Resource efficiency: minimize resource use
+  </li>
+
+    <li>
+      Reuse: reuse existing components / software as much as possible.
+  </li>
+
+</ul>
+
+<p>The optimal solution for the beginners' environment is seem to use virtual networks, in which you have both attacker and victim in your own preset virtual networking for security issue. This is easy for you to perform some pen-testings as well as understand where and why the victim is vulnerable. </p>
+<p>A workstation with 4 Gb RAM runs <a href="http://www.vmware.com/products/workstation">VMWare Workstation</a>(Windows/Linux)/<a href="http://www.vmware.com/products/fusion">VMWare Fusion(</a>OS X). Three virtual machines are used:</p>
+<ol>
+    <li>
+    The attacker is represented by a <a href="http://www.kali.org">Kali Linux</a> virtual machine. This distribution is based on Debian Linux, includes a multitude of security audit and penetration tools (including all the tools introduced in the below topics), and is officially available for download as a VMWare image that boots into a desktop environment. Therefore, Kali is easily accessible even by beginners who are new to Linux.
+  </li>
+
+    <li>
+      The target is represented by a <a href="https://community.rapid7.com/docs/DOC-1875">Metasploitable 2 </a>virtual machine. This image contains a number of services with known exploits (ftp, http, and so on), insecure settings, and three vulnerable web applications. This VM is also officially available as a VMWare image, and has low memory requirements since it does not offer a graphical user interface.
+  </li>
+
+    <li>
+      One of the topics requires a third ”zombie” machine. Almost any virtual machine that has networking support would do; we have chosen a FreeBSD 6.0 image for its low system requirements and for some diversity in the virtual environment (not 100% Linux).A VMWare image for this machine is provided by <a href="http://www.thoughtpolice.co.uk/vmware/">Simon</a>
+  </li>
+
+</ol>
 <hr>
 
+<h3 id="Some topics">Some topics</h3>
+<p>If you are interested in learning cybersecurity, you could follow the topics I list below as your learning curve. It is pity that I could not offer the contents about all the topics. However, these topics provide you some guidances about the concepts in cybersecurity and the handy tools.
+  <ul>
+<li><h4>Introduction</h4>
+<p>Install VMWare (the virtual environment) and the virtual machines used above, which guides a beginner through the installation and configuration process, as well as learn some standard Linux tools, shells and basic networking concepts.</p></li>
+<li><h4>Law and Ethics</h4>
+<p>Evaluate various actions in context of applicable law and ethics standards of relevant bodies.(This is very important!!)</p></li>
+<li><h4>Search Engine Hacking and Social Engineering</h4>
+<p>Investigate an organization and discover relevant organizational and personal information using a search engine(such as your friends), illustrating the amount of publicly available sensitive information that can routinely be found on the Internet. Wiki about <a href="http://en.wikipedia.org/wiki/Social_engineering_(security)">Social Engineering</a>.</p></li>
+<li><h4>Network Utilities and Scripting</h4>
+<p>Explore various uses of common versatile network utilities (such as netcat and wget) and do some scripting: in a shell script (utilizing the learned network utilities) and, on a lower level, by interacting with TCP/IP sockets directly from the Python scripting language.</p></li>
+<li><h4>Network Attacks</h4>
+<p>Search for the network attack tools included with Kali Linux. Specifically, ways to mount ARP and DNS spoofing attacks on a network. Learn "Nmap" scan uzing the “zombie” technique.</p></li>
+<li><h4>Metasploit</h4>
+<p>Using the "Metasploit framework" to perform several exploits on Metasploitable’s services that are known to be vulnerable, mount different denial-of-service attacks on a web server running on the target VM, and explain why only some of the attacks are successful.</p></li>
+<li><h4>Password Cracking</h4>
+<p>Introdcue an off-line password cracking tool "John the Ripper" and to on-line tool "Hydra" that can be used to guess passwords to
+a website requiring authentication. You could use the on-line tool to find valid credentials to a different web application supplied with Metasploitable, and to crack Metasploitable’s password database that they would download after compromising the target machine.</p></li>
+<li><h4>Intrusion Detection</h4>
+<p> Learn popular intrusion detection tool "snort", investigating varous modes of its operation and developping a custom filter that detects a previously studied Metasploit exploit attempt on a specific service.</p></li>
+<hr>
+
+<h3 id="Conclusion">Conclusion</h3>
+This blog is only used for the very beginner without much networking skills to know about cybersecurity and pentestings. In additon, the well-structured virtual envrionment is pretty friendly for beginner to play around. Although only some topics are shown without details, it gives you some hints about what to learn and what to read.
+
+<hr>
+
+<h3 id="Future Work">Future Work</h3>
+In the future, I have a plan to write some blogs about the detailed tutorial on above topics that are different from the course contents.
+
+</div>
+<hr>
 <div id="other">
   <h3>Other Posts</h3>
   <ul class="posts">
