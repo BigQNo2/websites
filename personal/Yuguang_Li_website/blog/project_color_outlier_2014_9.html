@@ -1,3 +1,359 @@
-<html>
-Coming soon!
-</html>
+<!DOCTYPE html>
+<html lang="en">
+    <head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Yuguang Li's Ibsite</title>
+        <meta name="author" content="Yuguang Li">
+        <meta name="description" content="The blog of Yuguang Li">
+        <link rel="canonical" href="blog/project_blog.html">
+        <link rel="shortcut icon" href="../assets/img/shortcut.ico">
+<!--         <link href="../assets/css/head.css" rel="stylesheet" type="text/css"> -->
+        <link rel="stylesheet" href="../assets/css/all.css" type="text/css">
+        <link rel="stylesheet" href="../assets/css/docs.css" type="text/css">
+        <link rel="stylesheet" href="../assets/css/bootstrap.min.css" type="text/css">
+        <link rel="stylesheet" href="../assets/css/bootstrap-responsive.css">
+        <script type="text/javascript" async="" src="../assets/js/ga.js"></script>
+        <script type="text/javascript" src="../assets/js/jquery-1.7.2.min.js"></script>
+        <script type="text/javascript" src="../assets/js/d3.v3.min.js" charset="utf-8"></script>
+        <script type="text/javascript" src="../assets/js/bootstrap.js"></script>
+<!-- /*        <script type="text/javascript" async="" src="../assets/js/embed.js"></script>*/ -->
+        <script type="text/x-mathjax-config">
+    // <![CDATA[
+        MathJax.Hub.Config({ 
+            TeX: {extensions: ["AMSmath.js", "AMSsymbols.js"]},     
+            extensions: ["tex2jax.js"],
+            jax: ["input/TeX", "output/HTML-CSS"],
+            showProcessingMessages : false,
+            messageStyle : "none" ,    
+            showMathMenu: false ,
+            tex2jax: {
+            processEnvironments: true,
+            inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+            displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+            preview : "none",
+            processEscapes: true
+        },
+        "HTML-CSS": { linebreaks: { automatic:true, width: "latex-container"} }
+    });
+    // ]]>
+        </script>
+        <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
+    </head>
+
+    <body>
+
+        <div class="container-fluid">
+            <div class="row-fluid">
+                <div id="sidebar-affix" class="span2 bs-docs-sidebar sidebar  ">
+                    <div class="Ill bs-docs-sidenav affix">
+
+
+    <div class="row-fluid">
+        <div class="span12">
+            <a class="brand" href="../index.html"> <img src="../assets/img/bigq.png" id="logo" alt="yl_logo"> </a>
+        </div>
+    </div> 
+
+  <h3><center><a href="../index.html">Yuguang Li</a><center></h3>
+  <hr>
+  <ul class="nav nav-list">
+    <div class="Ilcome">
+      <p>
+    Hi!
+    <br>
+    I'm Yuguang Li and I like
+    <br>
+    {creation, maths, coding}
+    <br>
+    <br>
+    I'm a {Ib developer, Researcher}
+    <br>
+    and this is my <a title="Yuguang's resume" href="../assets/cv/cv_YuguangLi.pdf" onclick="_gaq.push([&#39;_trackEvent&#39;, sidebar&#39;, &#39;click&#39;, &#39;cv&#39;]);">Résumé</a>.
+      </p>
+    </div>
+  </ul>
+
+  <hr>
+  
+  <div class="row-fluid">
+    <div class="span12" id="social">
+      <div id="soocial">
+
+  <a title="Yuguang on google plus" id="Yuguang Li on google+" href="https://plus.google.com/u/0/117045592302952581557" onclick="_gaq.push([&#39;_trackEvent&#39;, &#39;social&#39;, &#39;click&#39;, googleplus&#39;]);">
+    <i class="icon-google-plus-sign"></i>
+  </a>
+
+  
+  <a target="_blank" title="Yuguang Li on Github" href="https://github.com/BigQNo2" onclick="_gaq.push([&#39;_trackEvent&#39;, &#39;social&#39;, &#39;click&#39;, github&#39;]);">
+    <i class="icon-github-sign"></i>
+  </a>
+  
+ <a target="_blank" title="Yuguang Li on Linkedin" href="https://www.linkedin.com/pub/yuguang-li/92/a28/130" onclick="_gaq.push([&#39;_trackEvent&#39;, &#39;social&#39;, &#39;click&#39;, linkedin&#39;]);">
+    <i class="icon-linkedin-sign"></i>
+  </a>
+  
+  <a target="_blank" title="leeygx@bu.edu email" href="mailto:leeygx@bu.edu" onclick="_gaq.push([&#39;_trackEvent&#39;, &#39;social&#39;, &#39;click&#39;, email&#39;]);">
+    <i class="icon-envelope-alt"></i>
+  </a>
+  
+  <a target="_blank" title="Yuguang Li on google scholar" href="http://scholar.google.com/citations?user=PrEhNVQAAAAJ&hl=en" onclick="_gaq.push([&#39;_trackEvent&#39;, &#39;social&#39;, &#39;click&#39;, googlescholar&#39;]);">
+    <i class="icon-graduation-cap"></i>
+  </a>
+
+</div>
+
+    </div>
+  </div>
+
+</div>
+
+</div>
+<div class="span6 seven columns content bs-docs-container ">
+
+<p class="meta">
+  Sep 2014
+  <a href="../index.html">
+    <i class="home icon-home"></i>
+  </a>
+</p>
+<h1 class="title">A color outlier algorithm based on the Markov model</h1>
+
+<div id="post">
+<blockquote>
+<p>In recent years, color outlier techniques become more and more popular to assist the wild search and rescue for the reason that the use of video material captured by unmanned aerial vehicle (UAV) or elevated-mount camera is becoming a common tool.</p>
+</blockquote>
+
+<hr>
+<h3 id="Previous work">Previous work</h3>
+<p>As my first attempt when I try to solve the color outlier problem, I come up with a similar method to the [1] using the histogram because the method proposed by [1] gives me a bright hint. In [1], the HSV color representation is really a good one that involves the variables (hue and saturation) I want to operate. What`s more, it offers me a simple but generative method using center-surround difference model in [2]—similar to the nearest neighbor rule.</p> 
+
+<p>Considering all above, now that we know that the outlier is relatively concentrated small to the whole image, thinking as simply as possible, one way to find the outlier is to find the small ratio (occurrence) of the pixels of certain hue to the whole pixels and I then might find the possible area that includes the outlier:
+</p>
+<ol>
+  <li>Convert the regular RGB image to HSV and quantize the values of hue to 360 or 180 quantized levels: 
+  
+  $$S= \left\{ s\middle| s=quantized \: level \right\}$$</li> 
+  
+  <li>Record the numbers of pixels that have the same quantized values of hue, named $N_i$ and calculate the ratio of the numbers to the whole numbers of pixels of this image using formula $(a)$:
+
+    $$\frac {N_i}{\sum_{i \in S} N_i} \leq A \qquad(a) $$
+  
+  <ul>
+<li>$A$ -certain threshold</li>
+<li>$N_i$ -the number of pixels of certain quantized level in whole image</li>
+
+  </ul>
+  <p>When the ratio of certain color is no less than A, we could know that the color is common color. Next, we should reduce the saturation of the dominant color to enhance the outlier, but this procedure will make more noise points (small grey points), so we need to set a new threshold B of saturation to eliminate the noise pixels produced by this process and in the original image.</p>
+  <img src="../assets/img/coloroutlier/hue.png" alt="The histogram of hue" width="500px">
+  <P align="center" style="font-size:9pt">Figure 1: The histogram of hue</p>
+
+  </li>
+
+  <li>
+    Intuitively, if we apply this method to whole image, we will choose some unwanted colors that also have the same low occurrence as the outlier but not concentrate in one area. A way to solve this drawback is to divide the whole image to a set of sub-images: 
+
+    $$M=\left\{m\middle| m=number \: of \: subimages \right\}$$
+    
+    and record the numbers of pixels of certain hue that have low occurrence in one sub-image. Then, apply to formula $(b)$:
+
+    $$\frac {N_j}{\sum_{j \in M} N_j} \geq C \qquad(b) $$
+   
+   <ul>
+<li>$C$ -certain threshold</li>
+<li>$N_j$ -the number of pixels of certain quantized level in one sub-image</li>
+  </ul>
+  <p>When the ratio of certain color is no more than C, we might know that this color is not concentrated in a small area, which could be identified as the unwanted color.</p>
+    <img src="../assets/img/coloroutlier/otherhue.png" alt="Saturation of remaining color" width="500px">
+   <P align="center" style="font-size:9pt">Figure 2: Saturation of remaining color</p>
+
+  </li>
+</ol>
+
+<p>Unfortunately, this method could have all the drawbacks proposed by [1] that cannot provide the location of the outlier and the enhanced image is noisy, so I decide to develop a new method to figure out where the color outlier is and it will be discussed in the following parts.</p>
+
+<hr>
+
+<h3 id="Problem statement">Problem statement</h3>
+<ul>
+
+<li><h4>Assumptions</h4>
+<img src="../assets/img/coloroutlier/simple.png" alt="A simple example of searching image" width="500px">
+<P align="center" style="font-size:9pt">Figure 2: A simple example of searching image</p>
+<p>From the sample image we could conclude some assumptions about our method.</p>
+<ol>
+
+  <li><p>The color of object of interest is outstanding.</p></li>
+  <li><p>The object of interest has relatively high saturation.</p></li>
+  <li><p>The object of interest is relatively small compare to the entire frame.</p></li>
+  <li><p>The background is reasonably lack of texture.</p></li>
+  <li><p>Typical scenarios: sea, wild.</p></li>
+</ol>
+</li>
+<li>
+<h4>Mathematical Model</h4>
+<p>I decide to use the components in HSV Color Space, where $H$ is Hue, $S$ is Saturation and $V$ is Value related to brightness and then I treat the image as a Markov random field and it could be characterized by Gibbs joint probability distribution:
+  $$P_r(U_1 = u_1, \dotsc, U_N = u_N) = \frac{1}{Z}\mathrm{e}^{\frac{-E(u_1, \dotsc, u_N)}{\beta}}$$
+  $$E(u_1, \dotsc, u_N) = \sum_{c \in C} V_c(u_1, \dotsc, u_N)$$
+</p>
+<ul>
+  <li>$Z$ - normalizing constant called partition function</li>
+  <li>$\beta$ - natural temperature (constant)</li>
+  <li>$c$ - clique (geometric concept)</li>
+  <li>$C$ - set of all cliques</li>
+  <li>$V_c$ - potential function (algebraic concept)</li>
+   <li>$U_i$ - random variable of hue value</li>
+  </ul>
+<p>According to Gibbs distribution, we could get the prob. $(P_r)$ of each pixel in an image by the formula $(1)$ as below:
+
+$$P_r\big( U_{j,i} = q \big| u_{l,k}, (l,k) \in \eta_{j,i} \big) = \mathrm{e}^{\frac{-EU_{j,i}}{\beta}} \qquad (1)$$
+$$E(u_1, \dotsc, u_N) = \sum_{c \in C} V_c(u_1, \dotsc, u_N)$$
+
+</p>
+
+<ul>
+  <li>$U_{j,i}$ - normalizing constant called partition function</li>
+  <li>$\eta_{j.i}$ - natural temperature (constant)</li>
+  <li>Assume that $V_c(u_i,u_j) = \sqrt{(u_i-u_j)^2}$and Cliques is second-order neighborhood</li>
+</ul>
+<p>$P_r\big( U_{j,i} = q \big| u_{l,k}, (l,k) \in \eta_{j,i} \big)$ is at maximum when the image is a constant-valued random field realization , which means if there is no big difference of hue around the neighbors, the probability of that pixel will be high otherwise low. For this reason we could conclude that the color outlier could be the low prob. point or area</p>
+
+</ul>
+<hr>
+
+<h3 id="Algorithm">Algorithm</h3>
+<p>Based on the previous Mathematical model, we could get the prob. of each pixel according to the formula $(1)$ and Hue, and we know that the color outliers might be the pixels that have low prob. and the background is the pixels that have high prob. Therefore, we could use this property of the prob. to enhance our image. Here comes our algorithm that is used for enhance the image and find out where the color outlier is. This algorithm could be describe as:</p>
+<ol>
+<li>Find the prob. of each pixel.</li>
+<li>Enhance the Saturation of the low prob. pixels and reduce the Saturation of the high prob. pixels.</li>
+<li>According to the new Saturation, set Value (Brightness) of the low saturated pixels to zero.</li>
+<li>Noise reduction.</li>
+
+<p>Implementation is as following steps:</p>
+
+<ol>
+<li>Load image and convert into HSV.</li>
+<li>Extract Hue, Saturation and Value information</li>
+<li>According to formula $(1)$, we could calculate the prob. (called $Pr_{i,j}$ ) of each pixel according to hue value. Say Say Saturation as formula $S_{i,j}$ and operate the saturation by formula $(2)$:
+
+$$ \widetilde S_{i,j} = \alpha S_{i,j}(1-Pr_{i,j}) \qquad (2)  $$
+
+<ul>
+  <li>$\widetilde S_{i,j}$ - the enhanced saturation</li>
+  <li>$\alpha$ - a large constant for amplifying the saturation</li>
+</ul>
+
+</li>
+<li>Set a threshold B to the new saturation. If the $\widetilde S_{i,j} < B$, we set the enhanced Saturation ($\widetilde S_{i,j}$) and Value ($V_{i,j}$) of that pixel located at $(i,j)$ to zero. By this step, the color outlier will have more brightly color that is easier to find.</li>
+
+</ol>
+<p>When we take the fig.5 below as an example, let us to check the original saturation and enhanced saturation:</p>
+<img src="../assets/img/coloroutlier/original.png" alt="Saturation of the original image" width="500px">
+<P align="center" style="font-size:9pt">Figure 3: Saturation of the original image</p>
+  <img src="../assets/img/coloroutlier/enhanced.png" alt="Saturation of the enhanced image" width="500px">
+<P align="center" style="font-size:9pt">Figure 4: Saturation of the enhanced image</p>
+<hr>
+
+<h3 id="Experimental results">Experimental results</h3>
+ <hr>
+
+<h3 id="Conclusion">Conclusion</h3>
+<ol>
+
+<li>There is no constraint on the shape and we also do need our target object to be very small. However, sometimes the method only gives the outbound of the target.
+</li>
+
+<li>My method works well on the images that have relatively highly saturated color outlier especially on the red, purple, orange color, and the more consistent the background color is, the better the result. However, if the color of the target is nearly as same as the background, it might be ignored.
+</li>
+
+<li>It is hard to figure out the white and black object without introducing wrong or noisy point. What`s more, the threshold of the saturation need to slightly moderate when the background is messy.
+</li>
+
+<li>Another disadvantage is that the complexity of our approach is high. As the size increases, the time needed increases fast.
+</li>
+
+<li>I recommend the ones who love hiking or adventuring wear bright and outstanding color outwears in the wild.
+</li>
+
+</ol>
+<hr>
+<h3 id="Future work">Future work</h3>
+<p>
+The future improvement of method might come out from the combination of the two methods—the histogram one and the Markov random field (MRF) one. Firstly, we pre-process the image with the sub-block by using the histogram, and then utilizing our MRF model to the processed image will lead to a better results. As for the complexity of our approach, maybe we could use small window to the image instead of scanning every pixel.
+</p>
+
+ <hr>
+
+<h3 id="Reference">Reference</h3>
+<p>[1] Nathan D. Rasmussen, Daniel R. Thornton, Bryan S. Morse, <a href="http://ieeexplore.ieee.org/xpl/login.jsp?tp=&arnumber=4712015&url=http%3A%2F%2Fieeexplore.ieee.org%2Fiel5%2F4667700%2F4711669%2F04712015.pdf%3Farnumber%3D4712015">“Enhancement of Unusual Color in Aerial Video Sequences For Assisting Wilderness Search and Rescue”</a> in Image Processing, 2008. ICIP 2008. 15th IEEE International Conference on 12-15 October 2008</p>
+
+<p>[2] Gunhee Kim, Daniel Huber, and Martial Hebert, <a href="http://ieeexplore.ieee.org/xpl/login.jsp?tp=&arnumber=4544014&url=http%3A%2F%2Fieeexplore.ieee.org%2Fxpls%2Fabs_all.jsp%3Farnumber%3D4544014">“Segmentation of salient regions in outdoor scenes using imagery and 3-Ddata" </a> in WACV 08: Proceedings of the Ninth IEEE Workshop on Applications of Computer Vision. January 2008, IEEE Computer Society.</p>
+
+
+</div>
+<hr>
+<div id="other">
+  <h3>Other Posts</h3>
+  <ul class="posts">
+    <li>
+      <span>July 2014 »</span> <a href="../blog/project_Lab_Curriculum_for_Computer_Cyber_Security.html">Cyber security learning schedule for the very beginner</a>
+    </li>
+
+    <li>
+      <span>Aug 2014 »</span> <a href="../blog/project_cyber_service_for_smartlighting.html">Cloud-based Cyber services for Smart Lighting</a>
+    </li>
+
+    
+  </ul>
+</div>
+
+<hr>
+
+  <div style="float: none">
+   <div style="float: left"> <a href="../blog/project_cyber_service_for_smartlighting.html">
+    <i class="icon-arrow-left"></i></a></div>
+
+   <div style="float: right"> <a href="../blog/project_cyber_service_for_smartlighting.html">
+    <i class="icon-arrow-right"></i></a></div>
+  </div>
+
+
+
+</div>
+
+
+
+
+				</div>
+			</div>
+		</div>
+ 
+
+		<div class="footer ">
+			<div class="disclaimer">
+  
+
+  <p>
+    © Yuguang Li Copyright 2014
+  </p>
+</div>
+
+		</div>
+		
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-45763537-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+
+
+</body></html>
