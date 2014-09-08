@@ -178,8 +178,8 @@
 <ul>
 
 <li><h4>Assumptions</h4>
-<img src="../assets/img/coloroutlier/simple.png" alt="A simple example of searching image" width="500px">
-<P align="center" style="font-size:9pt">Figure 2: A simple example of searching image</p>
+<img src="../assets/img/coloroutlier/simple.png" alt="An example of searching image" width="500px">
+<P align="center" style="font-size:9pt">Figure 2: An example of searching image</p>
 <p>From the sample image we could conclude some assumptions about our method.</p>
 <ol>
 
@@ -228,7 +228,7 @@ $$E(u_1, \dotsc, u_N) = \sum_{c \in C} V_c(u_1, \dotsc, u_N)$$
 <li>Enhance the Saturation of the low prob. pixels and reduce the Saturation of the high prob. pixels.</li>
 <li>According to the new Saturation, set Value (Brightness) of the low saturated pixels to zero.</li>
 <li>Noise reduction.</li>
-
+</ol>
 <p>Implementation is as following steps:</p>
 
 <ol>
@@ -242,11 +242,23 @@ $$ \widetilde S_{i,j} = \alpha S_{i,j}(1-Pr_{i,j}) \qquad (2)  $$
   <li>$\widetilde S_{i,j}$ - the enhanced saturation</li>
   <li>$\alpha$ - a large constant for amplifying the saturation</li>
 </ul>
-
 </li>
+
 <li>Set a threshold B to the new saturation. If the $\widetilde S_{i,j} < B$, we set the enhanced Saturation ($\widetilde S_{i,j}$) and Value ($V_{i,j}$) of that pixel located at $(i,j)$ to zero. By this step, the color outlier will have more brightly color that is easier to find.</li>
 
+<li>
+Noise elimination when the image has high texture:
+<ol>
+  <li type="a">Median filtering (5x5) the component of Saturation</li>
+  <li type="a">Setting new larger threshold to saturation and Value</li>
+  <li type="a">Repeat 3-5 times</li>
+  </ol>
+</li>
+
+<li>Revert to RGB and output the enhanced image (black background and the enhanced color outlier)</li>
+
 </ol>
+
 <p>When we take the fig.5 below as an example, let us to check the original saturation and enhanced saturation:</p>
 <img src="../assets/img/coloroutlier/original.png" alt="Saturation of the original image" width="500px">
 <P align="center" style="font-size:9pt">Figure 3: Saturation of the original image</p>
@@ -255,6 +267,43 @@ $$ \widetilde S_{i,j} = \alpha S_{i,j}(1-Pr_{i,j}) \qquad (2)  $$
 <hr>
 
 <h3 id="Experimental results">Experimental results</h3>
+<ul>
+
+<li><h4>Results on the simple artificial images</h4></li>
+<img src="../assets/img/coloroutlier/figure5.png" alt="The image with simple artificial color outlier" width="500px">
+<P align="center" style="font-size:9pt">Figure 5: The image with simple artificial color outlier</p>
+
+<img src="../assets/img/coloroutlier/figure6.png" alt="The enhanced image with the simple artificial color outlier" width="500px">
+<P align="center" style="font-size:9pt">Figure 6: The enhanced image with the simple artificial color outlier</p>
+
+<p>These simple artificial color outliers with the high saturation are easy to find and our method seem to work well. And the color outliers in the enhanced image are much brighter (high saturation value in enhanced image as Fig.4 shows) than the ones that are in the original image. For this reason, it is easy for us to figure out where the color outliers are. Next sample image will show us a property of our method that is our method only gives the outbound of the color outlier if the color outlier has large and irregular shape, such as the yellow pins shown in the Fig.7</p>
+
+<img src="../assets/img/coloroutlier/figure7.png" alt="The image of the artificial color outlier with irregular shape" width="500px">
+<P align="center" style="font-size:9pt">Figure 7: The image of the artificial color outlier with irregular shape</p>
+
+<img src="../assets/img/coloroutlier/figure8.png" alt="The enhanced image of the artificial color outlier with irregular shape" width="500px">
+<P align="center" style="font-size:9pt">Figure 8: The enhanced image of the artificial color outlier with irregular shape</p>
+
+<p>From these results, we find that the pixels around the color outlier will be enhanced as well if the color outlier has larger and irregular shape for the reason that the pixels near the color outlier actually have the different hue with the area of the outlier. These pixels will also have the relatively low probability.</p>
+
+<li><h4>Results on the complex artificial images</h4></li>
+<img src="../assets/img/coloroutlier/figure9.png" alt="The image with more complex artificial color outlier" width="500px">
+<P align="center" style="font-size:9pt">Figure 9: The image with more complex artificial color outlier</p>
+
+<img src="../assets/img/coloroutlier/figure10.png" alt="The enhanced image with more complex artificial color outlier" width="500px">
+<P align="center" style="font-size:9pt">Figure 10: The enhanced image with more complex artificial color outliere</p>
+
+  <p>This sample image came from another team is more difficult because the target object is not as highly saturated as the former one and has other color. What`s more, one of the three colors is very similar to the background. However, since the background is consistent in blue, our method successfully finds that target object.</p>
+
+<li><h4>Results on the complex natural images</h4></li>
+<img src="../assets/img/coloroutlier/figure13.png" alt="The images with complex natural color outlier" width="500px">
+<P align="center" style="font-size:9pt">Figure 9: The images with complex natural color outlier</p>
+
+<img src="../assets/img/coloroutlier/figure14.png" alt="The enhanced image with natural color outlier" width="500px">
+<P align="center" style="font-size:9pt">Figure 10: The enhanced image with with natural color outlier</p>
+
+<p>The algorithm finds all the color outliers in this image that is full of target objects and these objects have mixed color and most of them are white. The result does not seem to be perfect because there is a little noise on the enhanced image. White outlier is the hardest for our method to figure out without any noise for the reason that white point or area always has very low saturation and our method actually set the threshold on the saturation even though we also set a threshold on Value.</p>
+</ul>
  <hr>
 
 <h3 id="Conclusion">Conclusion</h3>
