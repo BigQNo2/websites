@@ -92,7 +92,7 @@
 <div class="span6 seven columns content bs-docs-container ">
 
 <p class="meta">
-  Aug 2014
+  Sep 2014
   <a href="../index.html">
     <i class="home icon-home"></i>
   </a>
@@ -101,19 +101,44 @@
 
 <div id="post">
 <blockquote>
-<p>Everything goes smart now, so why not the light? Smart Lighitng project will serve us ranging from Visible Light Communication(VLC) to the intelligent lighting system as we can imagine with the light!</p>
+<p>A TinyOS mote is consist of a MTS400 sensor board, a MicaZ mote and a MIB520 gateway, programming in NesC(kind of Lite-weighted C for embeded system). Really really love these little toys with which I could apply my creation and imagination to build something interesting. </p>
 </blockquote>
-
-<h3 id="Introduciton">Introduction</h3>
 <hr>
 
-<h3 id="Teleport">Teleport</h3>
+<h3 id="Motivation">Motivation</h3>
+<p>Motion Capture as a famous technology is extensive used in military, entertainment, sports, and medical applications, and for validation of computer vision and robotics. In filmmaking, it refers to recording actions of human actors, and using that information to animate digital character models in 2D or 3D computer animation.
+</p>
+
+<p>
+A wireless Sensor Network (WSNET) system based on TinyOS consists of spatially distributed autonomous sensors to monitor physical or environmental conditions, such as temperature, sound, vibration, pressure, motion or pollutants and to cooperatively pass their data through the network to a main location. SNET has some characteristics such as small size, ease to use, good ability to withstand harsh environmental conditions and mobility of nodes.
+</p>
+<hr>
+
+<h3 id="Introduction">Introduction</h3>
+<p>In this blog, I will introduce my teammates' and my efforts to exploit the accelerators on TinyOS motes for motion curve.</p>
+
+<p>Since the sensor can collect the acceleration raw data, we design and build up a wireless sensor network with multiple motes, basement and display client. The WSNET can accomplish some basic applications such as gradientor, motion curve capture and motion period detection according to the Dual-axis Accelerometer data. Each mote senses accelerator data, calculates and pack with mode ID, velocity, calibration acceleration and displacement position.</p>
+
+<p>All the calculation will finish by the mote itself. It improves the mobility of motes to other environments and improves the performance of display client, especially when the WSNET is a really big and complicated  network. However, it also requires the algorithm we use as simple as possible.</p>
+
+ <p>In display client, a friendly matlab GUI  will visualize the receive data. According the motion curve and motion period, we can detect mote’s motion. Thus we can also detect a human motion. It can be used in Video Game, Password Authentication and wild animal tracing.</p>
 
 <hr>
-<h3 id="User Manual">User Manual</h3>
+
+<h3 id="Hardwares">Hardwares</h3>
+
 <hr>
 
-<h3 id="Post script">Post Script</h3>
+<h3 id="Implementation">Implementation</h3>
+
+<hr>
+
+<h3 id="Results">Results</h3>
+
+<hr>
+
+<h3 id="Future">Future</h3>
+
 <hr>
 
 </div>
