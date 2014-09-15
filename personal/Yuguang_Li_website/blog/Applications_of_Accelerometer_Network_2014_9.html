@@ -18,6 +18,38 @@
         <script type="text/javascript" src="../assets/js/d3.v3.min.js" charset="utf-8"></script>
         <script type="text/javascript" src="../assets/js/bootstrap.js"></script>
 <!-- /*        <script type="text/javascript" async="" src="../assets/js/embed.js"></script>*/ -->
+        <style>
+          table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+                        }
+          th, td {
+            padding: 5px;
+            text-align: center;
+                  }
+          </style>
+
+                  <script type="text/x-mathjax-config">
+    // <![CDATA[
+        MathJax.Hub.Config({ 
+            TeX: {extensions: ["AMSmath.js", "AMSsymbols.js"]},     
+            extensions: ["tex2jax.js"],
+            jax: ["input/TeX", "output/HTML-CSS"],
+            showProcessingMessages : false,
+            messageStyle : "none" ,    
+            showMathMenu: false ,
+            tex2jax: {
+            processEnvironments: true,
+            inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+            displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+            preview : "none",
+            processEscapes: true
+        },
+        "HTML-CSS": { linebreaks: { automatic:true, width: "latex-container"} }
+    });
+    // ]]>
+        </script>
+        <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
     </head>
 
     <body>
@@ -126,22 +158,181 @@ A wireless Sensor Network (WSNET) system based on TinyOS consists of spatially d
 <hr>
 
 <h3 id="Hardwares">Hardwares</h3>
+<img src="../assets/img/Applications_of_Accelerometer/hardware.png" alt="hardware assets" width="500" >
+</br>
 
+<table style="width:100%;">
+
+<tr>
+<td colspan="3">MPR-Series Mote Hardware Platforms MicaZ</td>
+</tr>
+
+
+<tr>
+<td rowspan="3">MCU</td>
+<td>Chip</td>
+<td>ATMega128L</td>
+</tr>
+
+
+<tr>
+<td>Type</td>
+<td>7.37 MHz, 8 bit</td>
+</tr>
+
+
+<tr>
+<td>Memory (kB)</td>
+<td>128</td>
+</tr>
+
+<tr>
+<td rowspan="2">RF Transceiver (Radio)</td>
+<td>Radio Frequency (MHz)</td>
+<td>2400</td>
+</tr>
+
+<tr>
+<td>Max. Data Rate</td>
+<td>250 kbits/sec</td>
+</tr>
+
+<tr>
+<td rowspan="2">Default power source</td>
+<td>Type</td>
+<td>AA, 2×</td>
+</tr>
+
+<tr>
+<td>Typical capacity</td>
+<td>2000 (mA-hr)</td>
+</tr>
+
+</table>
+  <P align="center" style="font-size:9pt">Table 1: Details for Platforms MicaZ</p>
+
+<table style="width:100%;">
+<tr>
+<th colspan="2">Dual-axis Accelerometer</th>
+</tr>
+
+<tr>
+<td>Analog Devices</td>
+<td>ADXL 202JE</td>
+</tr>
+
+<tr>
+<td>Acceleration Range</td>
+<td>±2 g</td>
+</tr>
+
+<tr>
+<td>Resolution</td>
+<td>2mg at 60Hz</td>
+</tr>
+
+<tr>
+<td>Nonlinearity</td>
+<td>0.2% of full scale</td>
+</tr>
+
+<tr>
+<td>Zero g bias level</td>
+<td>2.0mg/ °C from 25°C</td>
+</tr>
+  </table>
+  <P align="center" style="font-size:9pt">Table 2: Details for Accelerometer on MTS400</p>
 <hr>
 
 <h3 id="Implementation">Implementation</h3>
+<ul>
+<li><h4>Mathmetical Model</h4></li>
+<p>For the reasons that the TinyOS motes are lite-weighted embeded devices and lack of powerful processors and memories, we need to come up with a alogrithm as simple as possible.From classical physics, we know the relationship between acceleration, velocity and displacement:</p>
+  $$ v(t)=\int_0^t a(t)\, \mathrm{d}x $$
+  $$ s(t)=\int_0^t v(t)\, \mathrm{d}x $$
 
+
+<p>As long as we know a(t) , the displacement can be got easily by integral.
+In machine realm, the integral is achieved by dividing itself into sum of many little segments:
+  $$ v[n]=\sum_{i=0}^{n} a[n]\, \Delta t $$
+  $$ s[n]=\sum_{i=0}^{n} v[n]\, \Delta t $$
+</p>
+
+<p>In our wireless sensor network (WSN), each mote is attached to a sensor board with an 2-axis accelerometer that can detect the acceleration and convert it into ADC value. Therefore, our decsion is to use this simple integral algorithm to capture the location of the mote each time spot according to the acceleration data from accelerometers. 
+</p>
+
+<li><h4>Algorithms</h4></li>
+<p>Software layer is implemented by nesC code:
+<ol> 
+<li>Let the mote itself, based on ADC data, calculate the acceleration (in unit $g$) and velocity (in unit $m/s$) and displacement (in unit $m$) and send data back to base station.
+</li>
+
+<li>To get accurate results, the accelerometer must work in a high frequency. We managed to let the mote sample every $5 ms$, which is $200 Hz$ in frequency. This is sufficient for regular common applications. The ADXL202 accelerometer has a maximum bandwidth of $6 kHz$, the frequency is mainly constrained by the calculation speed of MCU.
+</li>
+
+<li>In order to solve the noise (instability) problem, we set a threshold, if $|a| < threshold $, force $v$ to zero.
+</li>
+
+<li>The result of calculation is a 3 floating point number, and sending packet is binary. So after calculation, a more procedure is applied to convert floating point numbers to binary.
+</li>
+
+</ol>
+</p>
+
+</br>
+<img src="../assets/img/Applications_of_Accelerometer/flowchart.png" alt="flowchart", width="500px">
+ <P align="center" style="font-size:9pt">Figure 1: Flow Chart for the Algorithm</p>
+<p>The WSN cannot afford high frequency (~$100Hz$) data sending and receiving, our experiment confirmed this and if the frequency exceeds some certain value, a lot of error packet is inevitable. So we set a counter to pick the data for sending and reduced transmit frequency to ~$10Hz$.</p>
+<p>In base station, the received data will be $a_x,a_y,v_x,v_y,s_x,s_y$, which can be used in many applications. We use acceleration to determine the tilt angel of the mote, displacement to draw the path of mote and the period of motion. Based on xlisten.m, we built GUI for plotting and reading data.</p>
+<li><h4>GUI in MatLab</h4></li>
+<p>In order to demonstrate our project more clearly and easily, we use Matlab to design and accomplish a GUI. GUI design of Matlab is friendly to programmer because of using handle to control the figures. In our GUI, we divide the panel to 4 main parts, nearly the axes which is used for showing the motion of our motes, the button group which contains the start and stop button, the setting part on which we can set some configuration of our COM and rate, and the result window that is used for indicating some calculating data of our motes. </p>
+<p>For more details: Firstly, start and stop buttons are easy for us to control our demonstration. What`s more, we can easily choose what to draw on the axes and which mote we want to choose by using the radio buttons and checkbox buttons. Also we can set our COM and rate as we wish. At last, the result window can let us comfortably observe the data of our each mote and the motion period.</p>
+
+</ul>
 <hr>
 
 <h3 id="Results">Results</h3>
+<ul>
 
+<li><h4>Setting:</h4></li>
+<ul>
+<li type="circle"><strong>COM:</strong> specify com port to listen to.</li>
+<li type="circle"><strong>Rate:</strong> specify baudrate.</li>
+<li type="circle"><strong>Bubble:</strong> change to gradienter view.</li>
+<li type="circle"><strong>Motion Curve:</strong> change to motion path view .</li>
+<li type="circle"><strong>Checkbox for Motes:</strong> choose the motes you want to focus(support multiple motes).</li>
+</ul>
+
+
+<li><h4>Motion Curve</h4></li>
+<img src="../assets/img/Applications_of_Accelerometer/motioncurve.png" alt="motioncurve", width="500px">
+<P align="center" style="font-size:9pt">Figure 2: Result of Motion Curve</p>
+<p>Coordinate data calculated by mote itself and shown on the screen using Matlab.</p>
+<p><strong>Value of X:</strong> Displacement in x-axis</p>
+<p><strong>Value of Y:</strong> Displacement in y axis</p>
+<p><strong>Period:</strong> Estimated motion period</p>
+
+<li><h4>Bubble Gradientor</h4></li>
+<img src="../assets/img/Applications_of_Accelerometer/gradientor.png" alt="gradientor", width="500px">
+<P align="center" style="font-size:9pt">Figure 2: Result of Gradientor Simulation</p>
+<p>Tilt angel calculated from acceleration data and shown on the screen using Matlab.
+</p>
+<p><strong>Value of X:</strong> tilt in x-axis $[-90°,90°]$
+</p>
+<p><strong>Value of Y:</strong> tilt in y-axis $[-90°,90°]$
+</p>
+<p><strong>Period:</strong> Estimated motion period</p>
+</ul>
 <hr>
 
 <h3 id="Future">Future</h3>
-
+<p>As far as now, the support to multiple motes is not perfect, mainly due to the interference of signals in high frequency.</p>
+Limited by 2-axis accelerometer, we can only detect 2-dimension motion and period. If <p>we have 3-axis accelerometer combined with gyroscope, we can get the coordinate and direction with high-accuracy, and under this circumstance motion capture system is just around the corner. Another interesting idea is to cooperate with GPS system as an a complement. If there is no GPS signal, motion capture system will help to determine the coordinate and direction and implement seamless navigation everywhere.
+</p>
 <hr>
 
 </div>
+
 <div id="other">
   <h3>Other Posts</h3>
   <ul class="posts">
@@ -163,7 +354,7 @@ A wireless Sensor Network (WSNET) system based on TinyOS consists of spatially d
 
 
   <div style="float: none">
-   <div style="float: left"> <a href="../blog/project_Lab_Curriculum_for_Computer_Cyber_Security.html">
+   <div style="float: left"> <a href="../blog/project_color_outlier_2014_9.html">
     <i class="icon-arrow-left"></i></a></div>
 
    <div style="float: right"> <a href="../blog/template.html">
