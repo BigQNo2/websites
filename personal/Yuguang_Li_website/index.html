@@ -91,12 +91,100 @@
 
 <div id="home">
 
-  <!-- <link href="assets/css/home.css" rel="stylesheet" type="text/css"> -->
+    <link href="assets/css/info-wrapper.css" rel="stylesheet" type="text/css">
+    <link href="assets/css/all.css" rel="stylesheet" type="text/css">  
+
+<!-- Blog -->
+<section class="section">
+  <a title="Yuguang's blog" href="blog/blog.html"><h2><i class="icon-book title-image"></i> Blog</h2></a>
+
+  <div class="info-wrapper">
+    <a href="#" tabindex="1" class="more_b">Click for more</a>
+    <a href="#" tabindex="1" class="less_b">Click for less</a>
+
+    <script type="text/javascript">
+                $('.more_b').click(function(){
+                $(this).animate({'opacity': '0'}, 1000);
+                $('.less_b').animate({
+                    'opacity': '1', 
+                    'z-index': '1'
+                }, 1000);
+                $('.info_b').animate({'height': '11.5em'}, 1000);
+            });
+                $('.less_b').click(function(){
+                $(this).animate({
+                    'opacity': '0',
+                    'z-index': '-1'
+                }, 1000);
+                $('.more_b').animate({'opacity': '1'}, 1000);
+                $('.info_b').animate({'height': '100px'}, 1000);
+            });</script>
+
+
+<div class="info_b">
+    <ul class="posts">
+      <li><span>Oct 2014 »</span><a href="blog/template.html"> How to Build Your Own Website by AWS and Nginx</a> 
+      </li>
+   </ul>
+
+    <ul class="posts">
+      <li><span>Sep 2014 »</span><a href="blog/Applications_of_Accelerometer_Network_2014_9.html"> Motion Curves Detection by TinyOS/motes</a> 
+      </li>
+   </ul>
+
+  <ul class="posts">
+    <li>
+      <span>Sep 2014 »</span><a href="blog/project_color_outlier_2014_9.html"> A Color Outlier Algorithm Based on the Markov Model</a>
+    </li>
+  </ul>
+
+    <ul class="posts">
+    <li>
+      <span>Aug 2014 »</span><a href="blog/project_cyber_service_for_smartlighting.html"> The Control Center for Intelligent Lighting System</a>
+    </li>
+    </ul>
+
+    <ul class="posts">
+      <li><span>July 2014 »</span><a href="blog/project_Lab_Curriculum_for_Computer_Cyber_Security.html"> Cyber Security Learning Schedule for the very Beginner</a> 
+      </li>
+   </ul>
+  </div>
+</div>
+</section>
+
 
 <!-- Project -->
-  <section class="section" style="height: 100px; overflow: auto; padding: 0px;">
-    <a title="Project" href="blog/project.html"><h2><i class="icon-beaker title-image"></i> Projects</h2></a>
-    
+
+<section class="section">
+
+<a title="Project" href="blog/project.html"><h2><i class="icon-beaker title-image"></i> Projects</h2></a>
+
+<div class="info-wrapper">
+    <a href="#" tabindex="1" class="more_pj">Click for more</a>
+    <a href="#" tabindex="1" class="less_pj">Click for less</a>
+
+    <script type="text/javascript">
+          $('.more_pj').click(function(){
+          $(this).animate({'opacity': '0'}, 1000);
+          $('.less_pj').animate({
+              'opacity': '1', 
+              'z-index': '1'
+          }, 1000);
+          $('.info_pj').animate({'height': '15em'}, 1000);
+      });
+          $('.less_pj').click(function(){
+          $(this).animate({
+              'opacity': '0',
+              'z-index': '-1'
+          }, 1000);
+          $('.more_pj').animate({'opacity': '1'}, 1000);
+          $('.info_pj').animate({'height': '100px'}, 1000);
+      });
+
+    </script>
+
+  <div class="info_pj">
+
     <ul class="posts">
       <li>
         <span>June 2013 - Sep 2013 »</span><a href="blog/project.html"> Lab Curriculum for Computer Cyber Security</a> 
@@ -132,46 +220,38 @@
         <span>May 2010 - Nov 2010 »</span><a href="blog/project.html"> VANET in Bidirectional Road Scenario</a>
       </li>
     </ul>
-
-  </section>
-
-<!-- Blog -->
-<section class="section">
-    <a title="Yuguang's blog" href="blog/blog.html"><h2><i class="icon-book title-image"></i> Blog</h2></a>
-
-    <ul class="posts">
-      <li><span>Oct 2014 »</span><a href="blog/template.html"> How to Build Your Own Website by AWS and Nginx</a> 
-      </li>
-   </ul>
-
-    <ul class="posts">
-      <li><span>Sep 2014 »</span><a href="blog/Applications_of_Accelerometer_Network_2014_9.html"> Motion Curves Detection by TinyOS/motes</a> 
-      </li>
-   </ul>
-
-  <ul class="posts">
-    <li>
-      <span>Sep 2014 »</span><a href="blog/project_color_outlier_2014_9.html"> A Color Outlier Algorithm Based on the Markov Model</a>
-    </li>
-  </ul>
-
-    <ul class="posts">
-    <li>
-      <span>Aug 2014 »</span><a href="blog/project_cyber_service_for_smartlighting.html"> The Control Center for Intelligent Lighting System</a>
-    </li>
-    </ul>
-
-    <ul class="posts">
-      <li><span>July 2014 »</span><a href="blog/project_Lab_Curriculum_for_Computer_Cyber_Security.html"> Cyber Security Learning Schedule for the very Beginner</a> 
-      </li>
-   </ul>
-
+  </div>
+</div>
 </section>
 
+
 <!-- Paper -->
-  <section class="section"  style="height: 100px; overflow: auto; padding: 0px;">
+  <section class="section">
     <a target="_blank" title="Yuguang's papers" href="http://scholar.google.com/citations?user=PrEhNVQAAAAJ&hl=en"><h2><i class="icon-pencil title-image"></i> Papers</h2></a>
 
+  <div class="info-wrapper">
+    <a href="#" tabindex="1" class="more_p">Click for more</a>
+    <a href="#" tabindex="1" class="less_p">Click for less</a>
+
+    <script type="text/javascript">
+                $('.more_p').click(function(){
+                $(this).animate({'opacity': '0'}, 1000);
+                $('.less_p').animate({
+                    'opacity': '1', 
+                    'z-index': '1'
+                }, 1000);
+                $('.info_p').animate({'height': '9.0em'}, 1000);
+            });
+                $('.less_p').click(function(){
+                $(this).animate({
+                    'opacity': '0',
+                    'z-index': '-1'
+                }, 1000);
+                $('.more_p').animate({'opacity': '1'}, 1000);
+                $('.info_p').animate({'height': '90px'}, 1000);
+            });</script>
+
+<div class="info_p">
     <ul class="posts">
         <li><span>June 2014 »</span><a href="http://cc.thinkst.com/talk/view/36701/"> A Set of Labs and a Simple Environment for a Course in Hands-on Offensive Security</a></li>
     </ul>
@@ -184,12 +264,37 @@
         <li><span>Nov 2010 »</span><a href="assets/papers/Packet Reachability of VANET in Bidirectional Road Scenario.pdf"> Packet Reachability of VANET in Bidirectional Road Scenario</a></li>
       
     </ul>
+</div>
+</div>
   </section>
 
 <!-- Trophy -->
   <section class="section">
     <h2><i class="icon-trophy title-image"></i> Trophy</h2>
-    
+    <div class="info-wrapper">
+    <a href="#" tabindex="1" class="more_t">Click for more</a>
+    <a href="#" tabindex="1" class="less_t">Click for less</a>
+
+    <script type="text/javascript">
+                $('.more_t').click(function(){
+                $(this).animate({'opacity': '0'}, 1000);
+                $('.less_t').animate({
+                    'opacity': '1', 
+                    'z-index': '1'
+                }, 1000);
+                $('.info_t').animate({'height': '8.0em'}, 1000);
+            });
+                $('.less_t').click(function(){
+                $(this).animate({
+                    'opacity': '0',
+                    'z-index': '-1'
+                }, 1000);
+                $('.more_t').animate({'opacity': '1'}, 1000);
+                $('.info_t').animate({'height': '60px'}, 1000);
+            });</script>
+
+
+<div class="info_t">
     <ul id="trophy" class="posts">
       <li>
         <span>2008 - 2009 »</span><a href="assets/trophy/Scholarship2.pdf"> SiYuan Scholarship for the Excellent Acdemic Performance in Xi’an Jiaotong University</a>
@@ -202,9 +307,9 @@
       </li>
 
     </ul>
-    
+</div>
+</div> 
   </section>
-
 
 </div>
 
