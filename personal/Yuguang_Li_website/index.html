@@ -96,11 +96,15 @@
 
 <!-- Blog -->
 <section class="section">
+
   <a title="Yuguang's blog" href="blog/blog.html"><h2><i class="icon-book title-image"></i> Blog</h2></a>
 
   <div class="info-wrapper">
     <a href="#" tabindex="1" class="more_b">Click for more</a>
     <a href="#" tabindex="1" class="less_b">Click for less</a>
+
+
+<div class="info_b">
 
     <script type="text/javascript">
                 $('.more_b').click(function(){
@@ -109,7 +113,8 @@
                     'opacity': '1', 
                     'z-index': '1'
                 }, 1000);
-                $('.info_b').animate({'height': '11.5em'}, 1000);
+                var height = $("#blog").height() + 25;
+                $('.info_b').animate({'height': height}, 1000);
             });
                 $('.less_b').click(function(){
                 $(this).animate({
@@ -120,8 +125,7 @@
                 $('.info_b').animate({'height': '100px'}, 1000);
             });</script>
 
-
-<div class="info_b">
+  <div id="blog">
     <ul class="posts">
       <li><span>Oct 2014 »</span><a href="blog/template.html"> How to Build Your Own Website by AWS and Nginx</a> 
       </li>
@@ -148,6 +152,7 @@
       <li><span>July 2014 »</span><a href="blog/project_Lab_Curriculum_for_Computer_Cyber_Security.html"> Cyber Security Learning Schedule for the very Beginner</a> 
       </li>
    </ul>
+ </div>
   </div>
 </div>
 </section>
@@ -163,14 +168,19 @@
     <a href="#" tabindex="1" class="more_pj">Click for more</a>
     <a href="#" tabindex="1" class="less_pj">Click for less</a>
 
-    <script type="text/javascript">
+  <div class="info_pj">
+
+    <div id="project">
+
+          <script type="text/javascript">
           $('.more_pj').click(function(){
           $(this).animate({'opacity': '0'}, 1000);
           $('.less_pj').animate({
               'opacity': '1', 
               'z-index': '1'
           }, 1000);
-          $('.info_pj').animate({'height': '15em'}, 1000);
+          var height = $("#project").height() + 25;
+          $('.info_pj').animate({'height': height}, 1000);
       });
           $('.less_pj').click(function(){
           $(this).animate({
@@ -182,8 +192,6 @@
       });
 
     </script>
-
-  <div class="info_pj">
 
     <ul class="posts">
       <li>
@@ -220,6 +228,8 @@
         <span>May 2010 - Nov 2010 »</span><a href="blog/project.html"> VANET in Bidirectional Road Scenario</a>
       </li>
     </ul>
+
+  </div>
   </div>
 </div>
 </section>
@@ -233,6 +243,9 @@
     <a href="#" tabindex="1" class="more_p">Click for more</a>
     <a href="#" tabindex="1" class="less_p">Click for less</a>
 
+<div class="info_p">
+  <div id="paper">
+
     <script type="text/javascript">
                 $('.more_p').click(function(){
                 $(this).animate({'opacity': '0'}, 1000);
@@ -240,7 +253,8 @@
                     'opacity': '1', 
                     'z-index': '1'
                 }, 1000);
-                $('.info_p').animate({'height': '9.0em'}, 1000);
+                var height = $("#paper").height() + 25;
+                $('.info_p').animate({'height': height}, 1000);
             });
                 $('.less_p').click(function(){
                 $(this).animate({
@@ -251,7 +265,6 @@
                 $('.info_p').animate({'height': '90px'}, 1000);
             });</script>
 
-<div class="info_p">
     <ul class="posts">
         <li><span>June 2014 »</span><a href="http://cc.thinkst.com/talk/view/36701/"> A Set of Labs and a Simple Environment for a Course in Hands-on Offensive Security</a></li>
     </ul>
@@ -264,6 +277,7 @@
         <li><span>Nov 2010 »</span><a href="assets/papers/Packet Reachability of VANET in Bidirectional Road Scenario.pdf"> Packet Reachability of VANET in Bidirectional Road Scenario</a></li>
       
     </ul>
+  </div>
 </div>
 </div>
   </section>
@@ -275,6 +289,13 @@
     <a href="#" tabindex="1" class="more_t">Click for more</a>
     <a href="#" tabindex="1" class="less_t">Click for less</a>
 
+
+
+
+<div class="info_t">
+
+  <div id="trophy">
+
     <script type="text/javascript">
                 $('.more_t').click(function(){
                 $(this).animate({'opacity': '0'}, 1000);
@@ -282,7 +303,8 @@
                     'opacity': '1', 
                     'z-index': '1'
                 }, 1000);
-                $('.info_t').animate({'height': '8.0em'}, 1000);
+                var height = $("#trophy").height() + 25;
+                $('.info_t').animate({'height': height}, 1000);
             });
                 $('.less_t').click(function(){
                 $(this).animate({
@@ -293,20 +315,20 @@
                 $('.info_t').animate({'height': '60px'}, 1000);
             });</script>
 
-
-<div class="info_t">
-    <ul id="trophy" class="posts">
+    <ul class="posts">
       <li>
         <span>2008 - 2009 »</span><a href="assets/trophy/Scholarship2.pdf"> SiYuan Scholarship for the Excellent Acdemic Performance in Xi’an Jiaotong University</a>
       </li>
     </ul>
 
-    <ul id="trophy" class="posts">
+    <ul class="posts">
       <li>
         <span>2006 - 2007 »</span><a href="assets/trophy/Scholarship1.pdf"> SiYuan Scholarship for the Excellent Acdemic Performance in Xi’an Jiaotong University</a>
       </li>
 
     </ul>
+
+  </div>
 </div>
 </div> 
   </section>
