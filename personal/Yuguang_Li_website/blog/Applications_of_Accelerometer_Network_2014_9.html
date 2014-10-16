@@ -134,12 +134,12 @@
 
 <div id="post">
 <blockquote>
-<p>A TinyOS mote is consist of a MTS400 sensor board, a MicaZ mote and a MIB520 gateway, programming in NesC(kind of Lite-weighted C for embeded system). Really really love these little toys with which I could apply my creation and imagination to build something interesting. </p>
+<p>A TinyOS mote is consist of a MTS400 sensor board, a MicaZ mote and a MIB520 gateway, programming in NesC(kind of Lite-weighted C for embedded system). Really really love these little toys with which I could apply my creation and imagination to build something interesting. </p>
 </blockquote>
 <hr>
 
 <h3 id="Motivation">Motivation</h3>
-<p>Motion Capture as a famous technology is extensive used in military, entertainment, sports, and medical applications, and for validation of computer vision and robotics. In filmmaking, it refers to recording actions of human actors, and using that information to animate digital character models in 2D or 3D computer animation.
+<p>Motion Capture as a famous technology is extensive used in military, entertainment, sports, and medical applications, and for validation of computer vision and robotics. In film-making, it refers to recording actions of human actors, and using that information to animate digital character models in 2D or 3D computer animation.
 </p>
 
 <p>
@@ -150,7 +150,7 @@ A wireless Sensor Network (WSNET) system based on TinyOS consists of spatially d
 <h3 id="Introduction">Introduction</h3>
 <p>In this blog, I will introduce my teammates' and my efforts to exploit the accelerators on TinyOS motes for motion curve.</p>
 
-<p>Since the sensor can collect the acceleration raw data, we design and build up a wireless sensor network with multiple motes, basement and display client. The WSNET can accomplish some basic applications such as gradientor, motion curve capture and motion period detection according to the Dual-axis Accelerometer data. Each mote senses accelerator data, calculates and pack with mode ID, velocity, calibration acceleration and displacement position.</p>
+<p>Since the sensor can collect the acceleration raw data, we design and build up a wireless sensor network with multiple motes, basement and display client. The WSNET can accomplish some basic applications such as gradienter, motion curve capture and motion period detection according to the Dual-axis Accelerometer data. Each mote senses accelerator data, calculates and pack with mode ID, velocity, calibration acceleration and displacement position.</p>
 
 <p>All the calculation will finish by the mote itself. It improves the mobility of motes to other environments and improves the performance of display client, especially when the WSNET is a really big and complicated  network. However, it also requires the algorithm we use as simple as possible.</p>
 
@@ -247,8 +247,8 @@ A wireless Sensor Network (WSNET) system based on TinyOS consists of spatially d
 
 <h3 id="Implementation">Implementation</h3>
 <ul>
-<li><h4>Mathmetical Model</h4></li>
-<p>For the reasons that the TinyOS motes are lite-weighted embeded devices and lack of powerful processors and memories, we need to come up with a alogrithm as simple as possible.From classical physics, we know the relationship between acceleration, velocity and displacement:</p>
+<li><h4>Mathematical Model</h4></li>
+<p>For the reasons that the TinyOS motes are lite-weighted embedded devices and lack of powerful processors and memories, we need to come up with a algorithm as simple as possible.From classical physics, we know the relationship between acceleration, velocity and displacement:</p>
   $$ v(t)=\int_0^t a(t)\, \mathrm{d}x $$
   $$ s(t)=\int_0^t v(t)\, \mathrm{d}x $$
 
@@ -259,7 +259,7 @@ In machine realm, the integral is achieved by dividing itself into sum of many l
   $$ s[n]=\sum_{i=0}^{n} v[n]\, \Delta t $$
 </p>
 
-<p>In our wireless sensor network (WSN), each mote is attached to a sensor board with an 2-axis accelerometer that can detect the acceleration and convert it into ADC value. Therefore, our decsion is to use this simple integral algorithm to capture the location of the mote each time spot according to the acceleration data from accelerometers. 
+<p>In our wireless sensor network (WSN), each mote is attached to a sensor board with an 2-axis accelerometer that can detect the acceleration and convert it into ADC value. Therefore, our decision is to use this simple integral algorithm to capture the location of the mote each time spot according to the acceleration data from accelerometers. 
 </p>
 
 <li><h4>Algorithms</h4></li>
@@ -287,7 +287,7 @@ In machine realm, the integral is achieved by dividing itself into sum of many l
 <p>In base station, the received data will be $a_x,a_y,v_x,v_y,s_x,s_y$, which can be used in many applications. We use acceleration to determine the tilt angel of the mote, displacement to draw the path of mote and the period of motion. Based on xlisten.m, we built GUI for plotting and reading data.</p>
 <li><h4>GUI in MatLab</h4></li>
 <p>In order to demonstrate our project more clearly and easily, we use Matlab to design and accomplish a GUI. GUI design of Matlab is friendly to programmer because of using handle to control the figures. In our GUI, we divide the panel to 4 main parts, nearly the axes which is used for showing the motion of our motes, the button group which contains the start and stop button, the setting part on which we can set some configuration of our COM and rate, and the result window that is used for indicating some calculating data of our motes. </p>
-<p>For more details: Firstly, start and stop buttons are easy for us to control our demonstration. What`s more, we can easily choose what to draw on the axes and which mote we want to choose by using the radio buttons and checkbox buttons. Also we can set our COM and rate as we wish. At last, the result window can let us comfortably observe the data of our each mote and the motion period.</p>
+<p>For more details: Firstly, start and stop buttons are easy for us to control our demonstration. What's more, we can easily choose what to draw on the axes and which mote we want to choose by using the radio buttons and check-box buttons. Also we can set our COM and rate as we wish. At last, the result window can let us comfortably observe the data of our each mote and the motion period.</p>
 
 </ul>
 <hr>
@@ -313,9 +313,9 @@ In machine realm, the integral is achieved by dividing itself into sum of many l
 <p><strong>Value of Y:</strong> Displacement in y axis</p>
 <p><strong>Period:</strong> Estimated motion period</p>
 
-<li><h4>Bubble Gradientor</h4></li>
+<li><h4>Bubble Gradienter</h4></li>
 <img src="../assets/img/Applications_of_Accelerometer/gradientor.png" alt="gradientor", width="500px">
-<P align="center" style="font-size:9pt">Figure 2: Result of Gradientor Simulation</p>
+<P align="center" style="font-size:9pt">Figure 2: Result of Gradienter Simulation</p>
 <p>Tilt angel calculated from acceleration data and shown on the screen using Matlab.
 </p>
 <p><strong>Value of X:</strong> tilt in x-axis $[-90°,90°]$

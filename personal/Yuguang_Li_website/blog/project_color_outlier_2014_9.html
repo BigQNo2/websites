@@ -280,30 +280,30 @@ Noise elimination when the image has high texture:
 <p>These simple artificial color outliers with the high saturation are easy to find and our method seem to work well. And the color outliers in the enhanced image are much brighter (high saturation value in enhanced image as Fig.4 shows) than the ones that are in the original image. For this reason, it is easy for us to figure out where the color outliers are. Next sample image will show us a property of our method that is our method only gives the outbound of the color outlier if the color outlier has large and irregular shape, such as the yellow pins shown in the Fig.7</p>
 
 <img src="../assets/img/coloroutlier/figure7.png" alt="The image of the artificial color outlier with irregular shape" width="500px">
-<P align="center" style="font-size:9pt">Figure 7: The image of the artificial color outlier with irregular shape</p>
+<P align="center" style="font-size:9pt">Figure 7: The image of the artificial color outliers with irregular shape</p>
 
 <img src="../assets/img/coloroutlier/figure8.png" alt="The enhanced image of the artificial color outlier with irregular shape" width="500px">
-<P align="center" style="font-size:9pt">Figure 8: The enhanced image of the artificial color outlier with irregular shape</p>
+<P align="center" style="font-size:9pt">Figure 8: The enhanced image of the artificial color outliers with irregular shape</p>
 
-<p>From these results, we find that the pixels around the color outlier will be enhanced as well if the color outlier has larger and irregular shape for the reason that the pixels near the color outlier actually have the different hue with the area of the outlier. These pixels will also have the relatively low probability.</p>
+<p>From these results, we find that the pixels around the color outliers will be enhanced as well if the color outliers has larger and irregular shape for the reason that the pixels near the color outliers actually have the different hue with the area of the outliers. These pixels will also have the relatively low probability.</p>
 
 <li><h4>Results on the complex artificial images</h4></li>
 <img src="../assets/img/coloroutlier/figure9.png" alt="The image with more complex artificial color outlier" width="500px">
-<P align="center" style="font-size:9pt">Figure 9: The image with more complex artificial color outlier</p>
+<P align="center" style="font-size:9pt">Figure 9: The image with more complex artificial color outliers</p>
 
 <img src="../assets/img/coloroutlier/figure10.png" alt="The enhanced image with more complex artificial color outlier" width="500px">
-<P align="center" style="font-size:9pt">Figure 10: The enhanced image with more complex artificial color outliere</p>
+<P align="center" style="font-size:9pt">Figure 10: The enhanced image with more complex artificial color outliers</p>
 
   <p>This sample image came from another team is more difficult because the target object is not as highly saturated as the former one and has other color. What`s more, one of the three colors is very similar to the background. However, since the background is consistent in blue, our method successfully finds that target object.</p>
 
 <li><h4>Results on the complex natural images</h4></li>
 <img src="../assets/img/coloroutlier/figure13.png" alt="The images with complex natural color outlier" width="500px">
-<P align="center" style="font-size:9pt">Figure 9: The images with complex natural color outlier</p>
+<P align="center" style="font-size:9pt">Figure 9: The images with complex natural color outliers</p>
 
 <img src="../assets/img/coloroutlier/figure14.png" alt="The enhanced image with natural color outlier" width="500px">
-<P align="center" style="font-size:9pt">Figure 10: The enhanced image with with natural color outlier</p>
+<P align="center" style="font-size:9pt">Figure 10: The enhanced image with with natural color outliers</p>
 
-<p>The algorithm finds all the color outliers in this image that is full of target objects and these objects have mixed color and most of them are white. The result does not seem to be perfect because there is a little noise on the enhanced image. White outlier is the hardest for our method to figure out without any noise for the reason that white point or area always has very low saturation and our method actually set the threshold on the saturation even though we also set a threshold on Value.</p>
+<p>The algorithm finds all the color outliers in this image that is full of target objects and these objects have mixed color and most of them are white. The result does not seem to be perfect because there is a little noise on the enhanced image. White outliers is the hardest for our method to figure out without any noise for the reason that white point or area always has very low saturation and our method actually set the threshold on the saturation even though we also set a threshold on Value.</p>
 </ul>
  <hr>
 
@@ -313,7 +313,7 @@ Noise elimination when the image has high texture:
 <li>There is no constraint on the shape and we also do need our target object to be very small. However, sometimes the method only gives the outbound of the target.
 </li>
 
-<li>My method works well on the images that have relatively highly saturated color outlier especially on the red, purple, orange color, and the more consistent the background color is, the better the result. However, if the color of the target is nearly as same as the background, it might be ignored.
+<li>My method works well on the images that have relatively highly saturated color outliers especially on the red, purple, orange color, and the more consistent the background color is, the better the result. However, if the color of the target is nearly as same as the background, it might be ignored.
 </li>
 
 <li>It is hard to figure out the white and black object without introducing wrong or noisy point. What`s more, the threshold of the saturation need to slightly moderate when the background is messy.
@@ -329,7 +329,7 @@ Noise elimination when the image has high texture:
 <hr>
 <h3 id="Future work">Future work</h3>
 <p>
-The future improvement of method might come out from the combination of the two methods—the histogram one and the Markov random field (MRF) one. Firstly, we pre-process the image with the sub-block by using the histogram, and then utilizing our MRF model to the processed image will lead to a better results. As for the complexity of our approach, maybe we could use small window to the image instead of scanning every pixel.
+The future improvement of method might come out from the combination of the two methods — the histogram one and the Markov random field (MRF) one. Firstly, we pre-process the image with the sub-block by using the histogram, and then utilizing our MRF model to the processed image will lead to a better results. As for the complexity of our approach, maybe we could use small window to the image instead of scanning every pixel.
 </p>
 
  <hr>

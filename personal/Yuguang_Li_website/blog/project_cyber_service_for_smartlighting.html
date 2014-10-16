@@ -102,24 +102,24 @@
 
 <div id="post">
 <blockquote>
-<p>Everything goes smart now, so why not the light? Smart Lighitng project will serve us ranging from Visible Light Communication(VLC) to the intelligent lighting system as we can imagine with the light!</p>
+<p>Everything goes smart now, so why not the light? Smart Lighting project will serve us ranging from Visible Light Communication(VLC) to the intelligent lighting system as we can imagine with the light!</p>
 </blockquote>
 
 <h3 id="Introduciton">Introduction</h3>
-<p>Hereby I am proud to introduce the part of my project for the Master's degree with <a href = 'http://www.bu.edu/ece/people/faculty/h-n/thomas-little/'>Prof. Thomas Little </a>who is the director in Smart Lighting engineering center in Boston University. It is mainly about a Cloud-based web contorl center that is implemented by J2EE for the backend and HTML, CSS, Javascript for the frontend to serve the intelligent lighting system.The below is the basic idea and design.</p>
+<p>Hereby I am proud to introduce the part of my project for the Master's degree with <a href = 'http://www.bu.edu/ece/people/faculty/h-n/thomas-little/'>Prof. Thomas Little </a>who is the director in Smart Lighting engineering center in Boston University. It is mainly about a Cloud-based web control center that is implemented by J2EE for the backend and HTML, CSS, Javascript for the frontend to serve the intelligent lighting system.The below is the basic idea and design.</p>
 <img src="../assets/img/smartlight/basic_design.png" id="basic_design" alt='basic design'>
 </br>
-<p>This web application is now running at the tomcat7 container on my personal AWS cloud server in which I put this tomcat7 behind the nginx web proxy server for security issue. Need to mention that this version of control center does <strong>Not</strong> connect to the lighting hardware, so it is just for <strong>demo and pleasure</strong>, but there are still the interaces for the hardwares for the later use.</p>
+<p>This web application is now running at the tomcat7 container on my personal AWS cloud server in which I put this tomcat7 behind the nginx web proxy server for security issue. Need to mention that this version of control center does <strong>Not</strong> connect to the lighting hardware, so it is just for <strong>demo and pleasure</strong>, but there are still the interfaces for the hardwares for the later use.</p>
 
 <hr>
 
-<h3 id="Teleport">Teleport</h3>
-<p>Teleport to the Control Center:</p>
+<h3 id="Teleport">Portal</h3>
+<p>Portal to the Control Center:</p>
 <ul>
   
   <li>
     <a href="http://smartlighting.yuguangli.com/SmartLight/">
-      <i class="icon-lightbulb">  Teleport to the control center</i>
+      <i class="icon-lightbulb">  Smart Lighting Control center</i>
     </a>
   </li>
 
@@ -162,7 +162,7 @@
     <li>
      <h4>Timer setting</h4>
     <ol>
-      <li>Sleep Timer: When users trigger Dynamic mode, a sleep timer need to be set If the user doesn’t trip either motion sensor, the system has light1 on a delayed timer that will shut the light off automatically after the allotted amount of time.</li>
+      <li>Sleep Timer: When users trigger Dynamic mode, a sleep timer need to be set If the user doesn't trip either motion sensor, the system has light1 on a delayed timer that will shut the light off automatically after the allotted amount of time.</li>
       <li>Wake up time: Users could set a designed time (00:00-23:59 hours) to wake up the lights. For Example, 6:00 is a proper time to wake up the lights.</li>
       <li>Alert time: When the current time hits the designed time (00:00-23:59 hours), the green lights will flicker two times as an alert to users.</li>
       <li>Dynamic Light Settings: In this section, users could choose the Preset mode: Fixed and Natural light. Fixed means that preset will stay the same as the users want while if users select the Natural light, the lights will change according to the time, which is accordant to the Natural light.</li>
