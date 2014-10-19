@@ -118,18 +118,18 @@
     <i class="home icon-home"></i>
   </a>
 </p>
-<h1 class="title">A Color Outlier Algorithm Based on the Markov Model</h1>
+<h1 class="title">A Color Outliers Algorithm Based on the Markov Model</h1>
 
 <div id="post">
 <blockquote>
-<p>In recent years, color outlier techniques become more and more popular to assist the wild search and rescue for the reason that the use of video material captured by unmanned aerial vehicle (UAV) or elevated-mount camera is becoming a common tool.</p>
+<p>In recent years, color outliers techniques become more and more popular to assist the wild search and rescue for the reason that the use of video material captured by unmanned aerial vehicle (UAV) or elevated-mount camera is becoming a common tool.</p>
 </blockquote>
 
 <hr>
 <h3 id="Previous work">Previous work</h3>
-<p>As my first attempt when I try to solve the color outlier problem, I come up with a similar method to the [1] using the histogram because the method proposed by [1] gives me a bright hint. In [1], the HSV color representation is really a good one that involves the variables (hue and saturation) I want to operate. What`s more, it offers me a simple but generative method using center-surround difference model in [2]—similar to the nearest neighbor rule.</p> 
+<p>As my first attempt when I try to solve the color outliers problem, I come up with a similar method to the [1] using the histogram because the method proposed by [1] gives me a bright hint. In [1], the HSV color representation is really a good one that involves the variables (hue and saturation) I want to operate. What`s more, it offers me a simple but generative method using center-surround difference model in [2]—similar to the nearest neighbor rule.</p> 
 
-<p>Considering all above, now that we know that the outlier is relatively concentrated small to the whole image, thinking as simply as possible, one way to find the outlier is to find the small ratio (occurrence) of the pixels of certain hue to the whole pixels and I then might find the possible area that includes the outlier:
+<p>Considering all above, now that we know that the outliers is relatively concentrated small to the whole image, thinking as simply as possible, one way to find the outliers is to find the small ratio (occurrence) of the pixels of certain hue to the whole pixels and I then might find the possible area that includes the outliers:
 </p>
 <ol>
   <li>Convert the regular RGB image to HSV and quantize the values of hue to 360 or 180 quantized levels: 
@@ -145,7 +145,7 @@
 <li>$N_i$ -the number of pixels of certain quantized level in whole image</li>
 
   </ul>
-  <p>When the ratio of certain color is no less than A, we could know that the color is common color. Next, we should reduce the saturation of the dominant color to enhance the outlier, but this procedure will make more noise points (small grey points), so we need to set a new threshold B of saturation to eliminate the noise pixels produced by this process and in the original image.</p>
+  <p>When the ratio of certain color is no less than A, we could know that the color is common color. Next, we should reduce the saturation of the dominant color to enhance the outliers, but this procedure will make more noise points (small grey points), so we need to set a new threshold B of saturation to eliminate the noise pixels produced by this process and in the original image.</p>
   <img src="../assets/img/coloroutlier/hue.png" alt="The histogram of hue" width="500px">
   <P align="center" style="font-size:9pt">Figure 1: The histogram of hue[1]</p>
 
@@ -171,7 +171,7 @@
   </li>
 </ol>
 
-<p>Unfortunately, this method could have all the drawbacks proposed by [1] that cannot provide the location of the outlier and the enhanced image is noisy, so I decide to develop a new method to figure out where the color outlier is and it will be discussed in the following parts.</p>
+<p>Unfortunately, this method could have all the drawbacks proposed by [1] that cannot provide the location of the outliers and the enhanced image is noisy, so I decide to develop a new method to figure out where the color outliers is and it will be discussed in the following parts.</p>
 
 <hr>
 
@@ -256,7 +256,7 @@ Noise elimination when the image has high texture:
   </ol>
 </li>
 
-<li>Revert to RGB and output the enhanced image (black background and the enhanced color outlier)</li>
+<li>Revert to RGB and output the enhanced image (black background and the enhanced color outliers)</li>
 
 </ol>
 
@@ -272,12 +272,12 @@ Noise elimination when the image has high texture:
 
 <li><h4>Results on the simple artificial images</h4></li>
 <img src="../assets/img/coloroutlier/figure5.png" alt="The image with simple artificial color outlier" width="500px">
-<P align="center" style="font-size:9pt">Figure 5: The image with simple artificial color outlier</p>
+<P align="center" style="font-size:9pt">Figure 5: The image with simple artificial color outliers</p>
 
 <img src="../assets/img/coloroutlier/figure6.png" alt="The enhanced image with the simple artificial color outlier" width="500px">
-<P align="center" style="font-size:9pt">Figure 6: The enhanced image with the simple artificial color outlier</p>
+<P align="center" style="font-size:9pt">Figure 6: The enhanced image with the simple artificial color outliers</p>
 
-<p>These simple artificial color outliers with the high saturation are easy to find and our method seem to work well. And the color outliers in the enhanced image are much brighter (high saturation value in enhanced image as Fig.4 shows) than the ones that are in the original image. For this reason, it is easy for us to figure out where the color outliers are. Next sample image will show us a property of our method that is our method only gives the outbound of the color outlier if the color outlier has large and irregular shape, such as the yellow pins shown in the Fig.7</p>
+<p>These simple artificial color outliers with the high saturation are easy to find and our method seem to work well. And the color outliers in the enhanced image are much brighter (high saturation value in enhanced image as Fig.4 shows) than the ones that are in the original image. For this reason, it is easy for us to figure out where the color outliers are. Next sample image will show us a property of our method that is our method only gives the outbound of the color outliers if the color outliers has large and irregular shape, such as the yellow pins shown in the Fig.7</p>
 
 <img src="../assets/img/coloroutlier/figure7.png" alt="The image of the artificial color outlier with irregular shape" width="500px">
 <P align="center" style="font-size:9pt">Figure 7: The image of the artificial color outliers with irregular shape</p>
