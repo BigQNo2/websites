@@ -3,7 +3,7 @@
     <head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Yuguang Li's website</title>
+        <title>Yuguang Li's template</title>
         <meta name="author" content="Yuguang Li">
         <meta name="description" content="The blog of Yuguang Li">
         <link rel="canonical" href="blog/project_blog.html">
@@ -64,6 +64,7 @@
     <i class="icon-google-plus-sign"></i>
   </a> -->
 
+  
   <a target="_blank" title="Yuguang Li on Github" href="https://github.com/BigQNo2" onclick="_gaq.push([&#39;_trackEvent&#39;, &#39;social&#39;, &#39;click&#39;, github&#39;]);">
     <i class="icon-github-sign"></i>
   </a>
@@ -81,7 +82,6 @@
   </a>
 
 </div>
-
     </div>
   </div>
 
@@ -92,31 +92,107 @@
 <div class="span6 seven columns content bs-docs-container ">
 
 <p class="meta">
-  Oct 2014
   <a href="../index.html">
     <i class="home icon-home"></i>
   </a>
 </p>
-<h1 class="title">How to Build Your Own Website by AWS and Nginx</h1>
+<h1 class="title">Notes on Porting VLC and Live555 on XIA</h1>
 <blockquote>
 <p>
-Aamzon Web Service provides a 12 months "Free Tier" policy for new users, with which you could pay nothing to own a micro Cloud EC2 server and it is the awesome benefit for us to play around. Why not make most use of it and firstly build your website by it?
+Recently I am helping a BU team who makes their contributions to a innovative future networking architecture: <a href="http://www.cs.cmu.edu/~xia/">XIA</a>. We are going to port some popular video streaming applications to the XIA to attract more public audiences to this new born with bright future, at least I claim it as promising. Using this page to make some notes to record the progress or thoughts during the time.
 </p>
 </blockquote>
 <hr>
+<h3>Basic Idea</h3>
+<p>XIA stack is also using socket to bind service as same as IP stack. Rather, we need to substitute UDP socket with XDP socket for porting the VLC and Live555. As my first idea, I am going to figure out how original VLC set up the IP address and bind the sockets. Perhaps, I will find a way to adapt it with XIA address.</p>
 
-<h3 id="introduction">Introduction</h3>
-<p>In this blog, I will introduce how to use the AWS and Nginx to bulid up a personal website or make your server to a web server. As my personal interests, I will choose Ubuntu Server 14.04 as my example, because I am a Linux and Mac user for which I prefer to stay in Linux Environment and ubuntu is my most familiar distribution. </p>
+<h3>Prerequisite for Internet Socket Programming</h3>
+
+<h4>addrinfo->sockaddr->sockaddr_in/sockaddr_xia->in_addr/xia_addr</h4>
+
+<ul>
+
+<li>
+
+Address Information Structure(struct addrinf):
+<pre>
+  <code>addrinf{
+int               ai_flags      Input flags.
+int               ai_family     Address family of socket.
+int               ai_socktype   Socket type.
+int               ai_protocol   Protocol of socket.
+socklen_t         ai_addrlen    Length of socket address.
+struct sockaddr  *ai_addr       Socket address of socket.
+char             *ai_canonname  Canonical name of service location.
+struct addrinfo  *ai_next       Pointer to next in list. 
+}
+</code>
+</pre>
+REF: <a href="http://pubs.opengroup.org/onlinepubs/009695399/basedefs/netdb.h.html">
+netdb.h - Definitions for network database operations</a>
+</li>
+
+<li>
+Internet Socket Address structure(struct sockaddr_in):
+<pre>
+<code>sockaddr_in{
+  sa_family_t     sin_family   AF_INET. 
+  in_port_t       sin_port     Port number. 
+  struct in_addr  sin_addr     IP address. 
+}
+</code>
+</pre>
+REF: <a href="http://pubs.opengroup.org/onlinepubs/009695399/basedefs/netinet/in.h.html">
+netinet/in.h - Internet address family
+</a>
+</li>
+
+<li>
+Internet Address structure(struct in_addr):
+<pre><code>in_addr: IPv4 uint32_t (255.255.255.255)</code></pre>
+REF: <a href="http://pubs.opengroup.org/onlinepubs/009695399/basedefs/netinet/in.h.html">
+netinet/in.h - Internet address family</a>
+</li>
+
+<li>
+Convert IPv4 and IPv6 addresses between binary and text form(inet_ntop/inet_pton):<br>
+REF: <a href = "http://pubs.opengroup.org/onlinepubs/009695399/functions/inet_ntop.html">
+Arpa/inet.h - Definitions for internet operations</a>
+</li>
+
+<li>
+Tutorial:<br>
+REF: <a href="http://www.cs.rutgers.edu/~pxk/417/notes/sockets/index.html">Simple Socket Programming(UDP) Tutorial</a>
+</li>
+</ul>
+
+<h3>Summary and Comments on original VLC source codes</h3>
+<ul>
+  <li><a href="https://github.com/videolan/vlc/blob/master/include/vlc_network.h">vlc/include/vlc_network.h</a></li>
+ <pre> <code>VLC_API int net_ConnectDgram( vlc_object_t *p_this, const char *psz_host, int i_port, int hlim, int proto );
+#define net_ConnectDgram(a, b, c, d, e ) \
+        net_ConnectDgram(VLC_OBJECT(a), b, c, d, e)
+</code></pre>
+
+<pre> <code>static inline int net_ConnectUDP (vlc_object_t *obj, const char *host, int port, int hlim)
+{
+    return net_ConnectDgram (obj, host, port, hlim, IPPROTO_UDP);
+}
+</code></pre>
+
+<pre> <code>VLC_API int net_OpenDgram( vlc_object_t *p_this, const char *psz_bind, int i_bind, const char *psz_server, int i_server, int proto );
+#define net_OpenDgram( a, b, c, d, e, g ) \
+        net_OpenDgram(VLC_OBJECT(a), b, c, d, e, g)
+</code></pre>
+
+<pre> <code>static inline int net_ListenUDP1 (vlc_object_t *obj, const char *host, int port)
+{
+    return net_OpenDgram (obj, host, port, NULL, 0, IPPROTO_UDP);
+}
+</code></pre>
+
+
 <hr>
-
-<h3 id="AWS">Amazon Web Service</h3>
-coming soon!
-<hr>
-
-<h3 id="nginx">Nginx</h3>
-coming soon!
-<hr>
-
 <div id="other">
   <h3>Other Posts</h3>
   <ul class="posts">
@@ -124,9 +200,12 @@ coming soon!
       <span>Nov 4 2014 »</span><a href="../blog/first_beta_release.html"> Great news: First beta release!</a>
     </li>
 
-    <li>
+   <li>
       <span>Oct 2014 »</span><a href="../blog/Python_version_coding_interview_questions.html"> Python Solutions for Coding Questions</a>
     </li>
+<!--     <li>
+      <span>Oct 2014 »</span><a href="../blog/Build_Website_by_AWS_and_Nginx_2014_9.html"> How to Build Your Own Website by AWS and Nginx</a>
+    </li> -->
 
    <li>
       <span>Sep 2014 »</span><a href="../blog/Applications_of_Accelerometer_Network_2014_9.html"> Motion Curves Detection by TinyOS/motes</a>
@@ -145,13 +224,14 @@ coming soon!
     </li>
     
   </ul>
+  </ul>
 </div>
 
   <div style="float: none">
-   <div style="float: left"> <a href="../blog/Applications_of_Accelerometer_Network_2014_9.html">
+   <div style="float: left"> <a href="../blog/first_beta_release.html">
     <i class="icon-arrow-left"></i></a></div>
 
-   <div style="float: right"> <a href="../blog/first_beta_release.html">
+   <div style="float: right"> <a href="../index.html">
     <i class="icon-arrow-right"></i></a></div>
   </div>
 <hr>
