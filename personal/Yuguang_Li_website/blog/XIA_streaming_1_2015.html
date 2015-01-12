@@ -104,7 +104,7 @@ Recently I am helping a BU team who makes their contributions to a innovative fu
 </blockquote>
 <hr>
 <h3>Tentative Idea</h3>
-<p>XIA stack is also using socket to bind service as same as IP stack. Rather, we need to substitute UDP socket with XDP socket for porting the VLC and Live555. As my first idea, I am going to figure out how original VLC set up the IP address and bind the sockets. Perhaps, I will find a way to adapt it with XIA address.</p>
+<p>XIA stack is also using socket as same as IP stack. Rather, we need to substitute UDP socket with XDP socket for porting the VLC and Live555 under RTP. As my first idea, I am going to figure out how original VLC set up the IP address and access to the streaming server. Perhaps, I will find a way to adapt it with XIA address. As for the Live555 media server, the key point is to find out how the source codes bind the socket with IP address, which gives me a hint about where to setup XIA addresses.</p>
 
 <h3>Prerequisite for Internet Socket Programming</h3>
 
@@ -162,7 +162,8 @@ Arpa/inet.h - Definitions for internet operations</a>
 
 <li>
 Tutorial:<br>
-REF: <a href="http://www.cs.rutgers.edu/~pxk/417/notes/sockets/index.html">Simple Socket Programming(UDP) Tutorial</a>
+REF1: <a href="http://www.cs.rutgers.edu/~pxk/417/notes/sockets/index.html">Simple Socket Programming(UDP) Tutorial</a></br>
+REF2: <a href="http://www.beej.us/guide/bgnet/output/html/singlepage/bgnet.html#simpleserver">Beej's Guide to Network Programming</a>
 </li>
 </ul>
 
