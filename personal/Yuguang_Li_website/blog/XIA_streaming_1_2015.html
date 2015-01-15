@@ -168,30 +168,7 @@ REF2: <a href="http://www.beej.us/guide/bgnet/output/html/singlepage/bgnet.html#
 </ul>
 
 <h3>Summary and Comments on original VLC source codes</h3>
-<ul>
-  <li><a href="https://github.com/videolan/vlc/blob/master/include/vlc_network.h">vlc/include/vlc_network.h</a></li>
- <pre> <code>VLC_API int net_ConnectDgram( vlc_object_t *p_this, const char *psz_host, int i_port, int hlim, int proto );
-#define net_ConnectDgram(a, b, c, d, e ) \
-        net_ConnectDgram(VLC_OBJECT(a), b, c, d, e)
-</code></pre>
-
-<pre> <code>static inline int net_ConnectUDP (vlc_object_t *obj, const char *host, int port, int hlim)
-{
-    return net_ConnectDgram (obj, host, port, hlim, IPPROTO_UDP);
-}
-</code></pre>
-
-<pre> <code>VLC_API int net_OpenDgram( vlc_object_t *p_this, const char *psz_bind, int i_bind, const char *psz_server, int i_server, int proto );
-#define net_OpenDgram( a, b, c, d, e, g ) \
-        net_OpenDgram(VLC_OBJECT(a), b, c, d, e, g)
-</code></pre>
-
-<pre> <code>static inline int net_ListenUDP1 (vlc_object_t *obj, const char *host, int port)
-{
-    return net_OpenDgram (obj, host, port, NULL, 0, IPPROTO_UDP);
-}
-</code></pre>
-</ul>
+<p>If you are interested, just See the project <a href="https://github.com/BigQNo2/vlc4XIA/wiki/Notes">wiki</a> where I comment and summary the VLC source codes and VLC working flow. As well, the important network functionalities(sockets) are highlighted in the last part in this wiki for porting VLC to all kinds of network stack.</p>
 
 <hr>
 <div id="other">
